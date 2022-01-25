@@ -1,7 +1,8 @@
 const filesToCache = [
     "/",
     "manifest.json",
-    "views/index.html"
+    "views/index.html",
+    "assets/img/logo.png"
 
 ];
 
@@ -18,9 +19,7 @@ self.addEventListener("install", (event) => {
 
 
 self.addEventListener("activate", (event) => {
-    console.log(
-        "******************   Activating new service worker... *******************************"
-    );
+    console.log("new service worker");
 
     const cacheWhitelist = [staticCacheName];
     // Ovako možemo obrisati sve ostale cacheve koji nisu naši
@@ -52,15 +51,13 @@ self.addEventListener("fetch", (event) => {
             .then((response) => {
                 if (response) {
                      console.log("Found " + event.request.url + " in cache!");
-                    //return response;
+
                 }
-                 console.log("----------------->> Network request for ",
-                     event.request.url
-                 );
+                
                 return fetch(event.request).then((response) => {
                     console.log("response.status = " + response.status);
                     if (response.status === 404) {
-                        //return caches.match("404.html");
+                        return;
                     }
                     return caches.open(staticCacheName).then((cache) => {
                         console.log(">>> Caching: " + event.request.url);

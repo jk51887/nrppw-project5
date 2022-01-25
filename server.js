@@ -19,9 +19,7 @@ app.get('/nativeAPI', function (req, res) {
     res.sendFile(path.join(__dirname, "public", "views","nativeAPI.html"));
 });
 
-app.get('/backgroundSync', function (req, res) {    
-    res.sendFile(path.join(__dirname, "public", "views","backgroundSync.html"));
-});
+
 
 app.use(express.static(path.join(__dirname, "public")));
 

@@ -1,5 +1,5 @@
 {
-  "name": "pwa-examples",
+  "name": "pwa",
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
@@ -7,7 +7,7 @@
     "start": "node server.js"
   },
   "author": "kolarec",
-  "license": "MIT",
+  "license": "fer",
   "dependencies": {
     "express": "^4.17.1",
     "fs-extra": "^10.0.0",
