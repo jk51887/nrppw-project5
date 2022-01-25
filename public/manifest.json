@@ -1,0 +1,24 @@
+{
+    "name": "PWA-Cookbook-01",
+    "short_name": "CookBook",
+    "description": "Demo aplikacija na predmetu Napredni razvoj za web",
+    "display": "fullscreen",
+    "theme_color": "red",
+    "background_color": "#DDD",
+    "start_url": "/index.html",
+    "scope": ".",
+    "orientation": "portrait-primary",
+    "dir": "ltr",
+    "lang": "en-US",
+    "prefer_related_applications":true,
+    "icons": [
+        {
+          "src": "assets/img/512.png",
+          "sizes": "512x512"
+        },
+        {
+          "src": "assets/img/192.png",
+          "sizes": "192x192"
+        }
+    ]  
+}

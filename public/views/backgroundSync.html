@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  
+  <body>
+    <div class="header">
+      <h1>Background sync</h1>
+      
+    </div>
+    <div class="columns">
+        
+      <p><button onclick="scheduleNotification()">Schedule notification in 10s<br>(using Notification Trigger API)</button></p>
+
+      </div>
+
+  </body>
+
+
+  <script>
+    function scheduleNotification() {
+  if (!('Notification' in window)) {
+    alert('Notification API not supported');
+    return;
+  }
+  if (!('showTrigger' in Notification.prototype)) {
+    alert('Notification Trigger API not supported');
+    return;
+  }
+  
+  navigator.serviceWorker.register('sw.js');
+  Notification.requestPermission()
+    .then(() => {
+      if (Notification.permission !== 'granted') {
+        throw 'Notification permission is not granted';
+      }
+    })
+    .then(() => navigator.serviceWorker.getRegistration())
+    .then((reg) => {
+      reg.showNotification("Hi there from the past!", {
+          showTrigger: new TimestampTrigger(new Date().getTime() + 10 * 1000)
+      })
+    })
+    .catch((err) => {
+      alert('Notification Trigger API error: ' + err);
+    });
+  }
+  </script>
+ 
+</html>
